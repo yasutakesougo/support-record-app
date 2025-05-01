@@ -1,0 +1,122 @@
+[
+  {
+    "DisplayName": "通所予定人数_MASTERss (ビュー)",
+    "Name": "_cr013__masters_views",
+    "RelatedEntityName": "通所予定人数_MASTERss",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3db4558e-6c9c-405b-acb1-79d42b53d65b": "通所予定人数_MASTER検索ダイアログ ビュー",
+      "3de6894b-ff41-4469-8451-a7a1ee7297b3": "通所予定人数_MASTER関連ビュー",
+      "b672154b-c4eb-4251-a0fd-22dadc08818b": "アクティブな通所予定人数_MASTERs",
+      "c8664dbc-a6c0-409e-8646-e20cd55375cf": "通所予定人数_MASTERの高度な検索ビュー",
+      "e4520611-58a3-41c3-8d5c-9e3dff49cc44": "非アクティブな通所予定人数_MASTERs"
+    }
+  },
+  {
+    "DisplayName": "Weekdays (通所予定人数_MASTERss)",
+    "Name": "cr013__masters_cr013_weekdays",
+    "OptionSetInfoNameMapping": {
+      "0": "月",
+      "1": "火",
+      "2": "水",
+      "3": "木",
+      "4": "金"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_weekdays",
+        "OptionSetReferenceEntityName": "通所予定人数_MASTERss"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr013_weekdays",
+    "RelatedEntityName": "通所予定人数_MASTERss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (通所予定人数_MASTERss)",
+    "Name": "cr013__masters_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "通所予定人数_MASTERss"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "通所予定人数_MASTERss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (通所予定人数_MASTERss)",
+    "Name": "cr013__masters_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "通所予定人数_MASTERss"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "通所予定人数_MASTERss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013__masterses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013__masters",
+    "MaxGetRowsCount": 500,
+    "Name": "通所予定人数_MASTERss",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "{Attachments}": "Attachments",
+      "cr013__masters_Annotations": "メモ ",
+      "cr013__masters_AsyncOperations": "システム ジョブ ",
+      "cr013__masters_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013__masters_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013__masters_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013__masters_ProcessSession": "プロセス セッション",
+      "cr013__masters_SyncErrors": "同期エラー",
+      "cr013__mastersid": "通所予定人数_MASTERs",
+      "cr013_plannedcount": "PlannedCount",
+      "cr013_title": "タイトル",
+      "cr013_weekdays": "Weekdays",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "通所予定人数_MASTERss",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

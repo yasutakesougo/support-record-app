@@ -1,0 +1,122 @@
+[
+  {
+    "DisplayName": "遅刻者一覧ss (ビュー)",
+    "Name": "_cr013_s_views",
+    "RelatedEntityName": "遅刻者一覧ss",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2837d57d-338c-4e5f-8304-731f59980ab9": "遅刻者一覧s関連ビュー",
+      "99237f03-ae6c-4800-ae8c-64084f4f5609": "アクティブな遅刻者一覧ss",
+      "a8047ef8-3f24-4ed1-8047-7beb6a4245a1": "非アクティブな遅刻者一覧ss",
+      "dd9d642a-0b6c-44ce-ad53-da638a8016eb": "遅刻者一覧s検索ダイアログ ビュー",
+      "e8247bd5-4d25-4e3f-81b7-80c8d9606704": "遅刻者一覧sの高度な検索ビュー"
+    }
+  },
+  {
+    "DisplayName": "Weekday (遅刻者一覧ss)",
+    "Name": "cr013_s_cr013_weekday",
+    "OptionSetInfoNameMapping": {
+      "0": "月",
+      "1": "火",
+      "2": "水",
+      "3": "木",
+      "4": "金"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_weekday",
+        "OptionSetReferenceEntityName": "遅刻者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr013_weekday",
+    "RelatedEntityName": "遅刻者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (遅刻者一覧ss)_1",
+    "Name": "cr013_s_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "遅刻者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "遅刻者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (遅刻者一覧ss)_1",
+    "Name": "cr013_s_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "遅刻者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "遅刻者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_ses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_s",
+    "MaxGetRowsCount": 500,
+    "Name": "遅刻者一覧ss",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "{Attachments}": "Attachments",
+      "cr013_date": "Date",
+      "cr013_s_Annotations": "メモ ",
+      "cr013_s_AsyncOperations": "システム ジョブ ",
+      "cr013_s_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_s_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_s_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_s_ProcessSession": "プロセス セッション",
+      "cr013_s_SyncErrors": "同期エラー",
+      "cr013_sid": "遅刻者一覧s",
+      "cr013_title": "タイトル",
+      "cr013_weekday": "Weekday",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "遅刻者一覧ss",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

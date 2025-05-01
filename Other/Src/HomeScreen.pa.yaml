@@ -1,0 +1,764 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  HomeScreen:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnVisible: |-
+        =Set(varShowForm, false);
+        Set(varSelectedDate, Today());
+        Set(varRecord, Defaults(SupportRecord_DBs));
+        Refresh(SupportRecord_DBs);
+        Refresh('支援手順_TEMPL'); // ←追加すると初回表示も安定します
+    Children:
+      - Rectangle4_1:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(209, 232, 178, 1)
+            Height: =80
+            Width: =1024
+      - Gallery2:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_ThreeTextVariant_ver5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =335
+            Items: |-
+              =AddColumns(
+                SortByColumns(
+                  Filter(
+                    '支援手順_TEMPL',
+                    cr013_userlookupid = varSelectedUser.UserID
+                  ),
+                  "cr013_rowno",
+                  If(SortDescending1, SortOrder.Descending, SortOrder.Ascending)
+                ),
+                "RecordToday",
+                IfError(
+                  LookUp(
+                    SupportRecord_DBs,
+                    cr013_userlookupid = varSelectedUser.UserID &&
+                    cr013_rowno        = ThisRecord.cr013_rowno &&
+                    cr013_field_1      = varSelectedDate
+                  ),
+                  Blank()
+                )
+              )
+            TemplateFill: |-
+              =If(
+                  !IsBlank(ThisItem.RecordToday) && !IsBlank(ThisItem.RecordToday.cr013_field_7),
+                  RGBA(232, 245, 233, 1),
+                  RGBA(255, 235, 238, 1)
+              )
+            TemplateSize: =168
+            Width: =588
+            X: =430
+            Y: =145
+          Children:
+            - Title2:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =25
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =12
+                  Text: =ThisItem.時間帯
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =71
+                  X: =15
+                  Y: =1
+            - Subtitle2:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =26
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =16
+                  Text: =ThisItem.活動
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =178
+                  X: =15
+                  Y: =30
+            - Body1:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =23
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =14
+                  Text: =ThisItem.本人
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =220
+                  X: =15
+                  Y: =63
+            - NextArrow2:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  AccessibleLabel: =Self.Tooltip
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(54, 176, 75, 1)
+                  Height: =81
+                  Icon: =Icon.Compose
+                  OnSelect: |-
+                    =// ① 当日分の既存レコードを検索
+                    Set(
+                      varExisting,
+                      LookUp(
+                        SupportRecord_DBs,
+                        cr013_userlookupid = varSelectedUser.UserID
+                        && cr013_rowno      = ThisItem.cr013_rowno
+                        && cr013_field_1    = varSelectedDate
+                      )
+                    );
+
+                    // ② 新規モードかどうかを判定
+                    Set(varIsNew, IsBlank(varExisting));
+
+                    // ③ varRecord に既存 or 新規プレースホルダをセット
+                    Set(
+                      varRecord,
+                      If(
+                        varIsNew,
+                        {
+                          cr013_userlookupid: varSelectedUser.UserID,
+                          cr013_rowno       : ThisItem.cr013_rowno,
+                          cr013_field_1     : varSelectedDate,
+                          cr013_field_3     : ThisItem.時間帯,
+                          cr013_field_4     : ThisItem.活動,
+                          cr013_field_5     : ThisItem.本人,
+                          cr013_field_6     : ThisItem.支援者
+                        },
+                        varExisting
+                      )
+                    );
+
+                    // ④ フォームを開く
+                    Set(varShowForm, true);
+                    Navigate(EditScreen, ScreenTransition.None);
+                  PaddingBottom: =16
+                  PaddingLeft: =16
+                  PaddingRight: =11.99
+                  PaddingTop: =11.99
+                  Tooltip: ="項目の詳細の表示"
+                  Width: =99
+                  X: =489
+                  Y: =26
+            - Separator1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =385.31
+                  X: =0.00
+                  Y: =Parent.TemplateHeight - Self.Height
+            - Rectangle3:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.TemplateHeight - Separator1.Height
+                  OnSelect: =Select(Parent)
+                  Visible: =ThisItem.IsSelected
+                  Width: =3.00
+                  X: =0.00
+            - Label14:
+                Control: Label@2.5.1
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(54, 176, 75, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =36
+                  OnSelect: =Select(Parent)
+                  Size: =12
+                  Text: |-
+                    =If(
+                        IsBlank(ThisItem.RecordToday) || IsBlank(ThisItem.RecordToday.cr013_field_7),
+                        "記入する",
+                        "編集する"
+                    )
+                  Width: =99
+                  X: =489
+            - Label13:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =92
+                  OnSelect: =Select(Parent)
+                  Size: =14
+                  Text: =ThisItem.本人
+                  Width: =585
+                  X: =3
+                  Y: =76
+      - Gallery1:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_ThreeTextVariant_ver5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =238
+            Items: |-
+              =Filter(
+                '1日の中で気をつける事',
+                UserLookupId = varSelectedUser.UserID
+              )
+            TemplateSize: =80
+            Width: =595.96
+            X: =428.04
+            Y: =529
+          Children:
+            - Title1:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =10.49
+                  Text: =ThisItem.UserLookupId
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =531.49
+                  X: =11.99
+                  Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle1.Size*1.8 + 2 + Body3.Size*1.8)) / 2
+            - Subtitle1:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =9.00
+                  Text: =ThisItem.ItemName
+                  Underline: =true
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =531.49
+                  X: =11.99
+                  Y: =Title1.Y + Title1.Height
+            - Body3:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =9.00
+                  Text: =ThisItem.Content
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =531.49
+                  X: =11.99
+                  Y: =Subtitle1.Y + Subtitle1.Height
+            - NextArrow1:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  AccessibleLabel: =Self.Tooltip
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(166, 166, 166, 1)
+                  Height: =50
+                  Icon: =Icon.ChevronRight
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =16
+                  PaddingLeft: =16
+                  PaddingRight: =11.99
+                  PaddingTop: =11.99
+                  Tooltip: ="項目の詳細の表示"
+                  Width: =37.48
+                  X: =549.48
+                  Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            - Separator3:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =595.96
+                  X: =0.00
+                  Y: =Parent.TemplateHeight - Self.Height
+            - Rectangle1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.TemplateHeight - Separator3.Height
+                  OnSelect: =Select(Parent)
+                  Visible: =ThisItem.IsSelected
+                  Width: =3.00
+                  X: =0.00
+      - Rectangle2:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =2
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =60
+            Width: =253
+            X: =597
+            Y: =10
+      - DatePicker1:
+          Control: Classic/DatePicker@2.6.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            DefaultDate: =varSelectedDate
+            Font: =Font.'Open Sans'
+            Height: =49
+            IconBackground: =RGBA(56, 96, 178, 1)
+            IconFill: =RGBA(255, 255, 255, 1)
+            OnChange: =Set(varSelectedDate, DatePicker1.SelectedDate)
+            PaddingRight: =3.75
+            PaddingTop: =0.00
+            Reset: =
+            Size: =15
+            Width: =385.31
+            X: =20
+            Y: =161
+      - BtnYesterday:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Set(varSelectedDate, DateAdd(varSelectedDate, -1, TimeUnit.Days))
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="←昨日"
+            Width: =119.94
+            X: =20
+            Y: =223
+      - BtnToday:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(250, 155, 112, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Set(varSelectedDate, Today())
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Text: = "今日"
+            Width: =119.94
+            X: =153
+            Y: =223
+      - BtnTomorrow:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Set(varSelectedDate, DateAdd(varSelectedDate, 1, TimeUnit.Days))
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="明日→"
+            Width: =119.94
+            X: =286
+            Y: =223
+      - Label7:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 134, 208, 1)
+            Font: =Font.'Open Sans'
+            Height: =80
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            Size: =25
+            Text: ="支援記録アプリ"
+            Width: =433
+      - Label5:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            Size: =22
+            Text: = varSelectedUser.氏名    // or varSelectedUser.UserID
+            Width: =254
+            X: =598
+            Y: =10
+      - Rectangle5:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(209, 232, 178, 1)
+            Height: =49
+            Width: =586.21
+            X: =432
+            Y: =480
+      - Label1:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 134, 208, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            Size: =15
+            Text: ="~1日の中で気をつける事~"
+            Width: =590
+            X: =428
+            Y: =488
+      - Rectangle5_2:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(209, 232, 178, 1)
+            Height: =33
+            Width: =589
+            X: =430
+            Y: =96
+      - Label1_2:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 134, 208, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =18
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            Size: =15
+            Text: ="~1日の支援手順~"
+            Width: =588
+            X: =428
+            Y: =105
+      - Button3:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            BorderThickness: =3
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(202, 202, 202, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(Dbscreen, ScreenTransition.None)
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="記録DB"
+            Width: =182
+            X: =223
+            Y: =100
+      - Rectangle13_1:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =2
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =418
+            Width: =388
+            X: =17
+            Y: =343
+      - Toggle_SevereFilter_1:
+          Control: Classic/Toggle@2.1.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Default: =true
+            Font: =Font.'Open Sans'
+            Height: =44
+            Size: =9.75
+            TrueFill: =RGBA(136, 160, 209, 1)
+            Width: =75
+            X: =20
+            Y: =285
+      - Label4_1:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =26
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            Size: =14
+            Text: ="重度加算ありのみ表示"
+            Underline: =true
+            Width: =221
+            X: =95
+            Y: =291
+      - Icon8_1:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(56, 96, 178, 1)
+            Height: =30
+            Icon: =Icon.Sort
+            OnSelect: |-
+              =// Icon8.OnSelect
+              UpdateContext({ SortDescending1: ! SortDescending1 })
+            PaddingRight: =0.00
+            PaddingTop: =0.00
+            Width: =56
+            X: =293
+            Y: =291
+      - BrowseGallery1_1:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_ThreeTextVariant_ver5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =418
+            Items: |-
+              =SortByColumns(
+                Filter(
+                  '利用者リスト',
+                  在籍フラグ = true &&
+                  ( ! Toggle_SevereFilter_1.Value || 重度加算 = true )
+                ),
+                "cr013_userid",
+                If(SortDescending1, SortOrder.Descending, SortOrder.Ascending)
+              )
+            OnSelect: |-
+              =Set(varSelectedUser, ThisItem);
+              Navigate(HomeScreen, ScreenTransition.None);
+            TemplateSize: =162
+            Width: =388
+            X: =17
+            Y: =343
+          Children:
+            - Title5_1:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =13.49
+                  Text: =ThisItem.UserID
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =264.62
+                  X: =11.99
+            - Subtitle5_1:
+                Control: Label@2.5.1
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Font: =Font.'Open Sans'
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =39
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0.00
+                  PaddingTop: =0.00
+                  Size: =22
+                  Text: =ThisItem.氏名
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =317.10
+                  X: =11.99
+                  Y: =56
+            - NextArrow5_1:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  AccessibleLabel: =Self.Tooltip
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(166, 166, 166, 1)
+                  Height: =50
+                  Icon: =Icon.ChevronRight
+                  OnSelect: |-
+                    =// 選んだレコードを丸ごと保持
+                    Set(varSelectedUser, ThisItem);
+                    // ホーム画面へ
+                    Navigate(HomeScreen, ScreenTransition.None)
+                  PaddingBottom: =16
+                  PaddingLeft: =16
+                  PaddingRight: =11.99
+                  PaddingTop: =11.99
+                  Tooltip: ="項目の詳細の表示"
+                  Width: =37.48
+                  X: =282.61
+                  Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            - Separator6_1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =329.09
+                  X: =0.00
+                  Y: =Parent.TemplateHeight - Self.Height
+            - Rectangle6_1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(0, 18, 107, 1)
+                  Height: =Parent.TemplateHeight - Separator6_1.Height
+                  OnSelect: =Select(Parent)
+                  Visible: =ThisItem.IsSelected
+                  Width: =3.00
+                  X: =0.00
+      - Label12:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(255, 0, 0, 1)
+            BorderThickness: =2
+            Color: =RGBA(255, 0, 0, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            Text: |-
+              ="記入状況：" &
+              CountIf(
+                Gallery2.AllItems,
+                ! IsBlank( RecordToday ) && ! IsBlank( RecordToday.cr013_field_7 )
+              )
+              & "/" &
+              CountRows( Gallery2.AllItems ) &
+              "件"
+            Width: =156
+            X: =441
+            Y: =10
+      - Button2:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(202, 202, 202, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Notify("現在準備中です", NotificationType.Information)
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="PDF出力"
+            Width: =178
+            X: =20
+            Y: =100
+      - ToggleShowUnfilled:
+          Control: Classic/Toggle@2.1.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            TrueFill: =RGBA(255, 204, 128, 1)
+            Width: =99
+            X: =894
+            Y: =42
+      - Label15:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 0, 0, 1)
+            Font: =Font.'Open Sans'
+            Text: ="未記入のみ表示"
+            X: =869
+      - Label12_1:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(255, 0, 0, 1)
+            BorderThickness: =2
+            Color: =RGBA(255, 0, 0, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            Text: |-
+              ="記入状況：" &
+              CountIf(
+                Gallery2.AllItems,
+                !IsBlank( RecordToday ) && !IsBlank( RecordToday.cr013_field_7 )
+              )
+              & "/" &
+              CountRows( Gallery2.AllItems )
+              & "件"
+            Width: =156
+            X: =441
+            Y: =10

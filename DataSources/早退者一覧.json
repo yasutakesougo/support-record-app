@@ -1,0 +1,120 @@
+[
+  {
+    "DisplayName": "早退者一覧 (ビュー)",
+    "Name": "_cr013_4992e49883294d18b286245194f37bb6_views",
+    "RelatedEntityName": "早退者一覧",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1d2ce59b-5722-4c6b-9b77-ed65cba1b775": "早退者一覧の高度な検索ビュー",
+      "42569879-c36e-4bda-a232-5b899086b4c8": "アクティブな早退者一覧",
+      "4e872654-89a3-4446-8e14-ba24f8ffb0ce": "非アクティブな早退者一覧",
+      "5385f76a-c916-4022-a2b6-c4e5e8050401": "早退者一覧関連ビュー",
+      "5be4bde8-40c8-4554-91c1-0d6d8e996d81": "早退者一覧検索ダイアログ ビュー"
+    }
+  },
+  {
+    "DisplayName": "Weekday (早退者一覧)",
+    "Name": "cr013_4992e49883294d18b286245194f37bb6_cr013_weekday",
+    "OptionSetInfoNameMapping": {
+      "0": "月",
+      "1": "火",
+      "2": "水",
+      "3": "木",
+      "4": "金"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_weekday",
+        "OptionSetReferenceEntityName": "早退者一覧"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr013_weekday",
+    "RelatedEntityName": "早退者一覧",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (早退者一覧)_1",
+    "Name": "cr013_4992e49883294d18b286245194f37bb6_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "早退者一覧"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "早退者一覧",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (早退者一覧)_1",
+    "Name": "cr013_4992e49883294d18b286245194f37bb6_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "早退者一覧"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "早退者一覧",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_4992e49883294d18b286245194f37bb6s",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_4992e49883294d18b286245194f37bb6",
+    "MaxGetRowsCount": 500,
+    "Name": "早退者一覧",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "cr013_4992e49883294d18b286245194f37bb6_AsyncOperations": "システム ジョブ ",
+      "cr013_4992e49883294d18b286245194f37bb6_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_4992e49883294d18b286245194f37bb6_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_4992e49883294d18b286245194f37bb6_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_4992e49883294d18b286245194f37bb6_ProcessSession": "プロセス セッション",
+      "cr013_4992e49883294d18b286245194f37bb6_SyncErrors": "同期エラー",
+      "cr013_4992e49883294d18b286245194f37bb6id": "早退者一覧",
+      "cr013_date": "Date",
+      "cr013_title": "タイトル",
+      "cr013_weekday": "Weekday",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "早退者一覧",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

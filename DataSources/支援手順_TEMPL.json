@@ -1,0 +1,101 @@
+[
+  {
+    "DisplayName": "支援手順_TEMPL (ビュー)",
+    "Name": "_cr013__templ4_views",
+    "RelatedEntityName": "支援手順_TEMPL",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "4e811ee5-7b0f-407c-9a17-85e33ad7236b": "アクティブな支援手順_TEMPL",
+      "8fba2d17-bba4-4309-9b30-700be5e3cb81": "支援手順_TEMPL関連ビュー",
+      "a1065be5-9c67-4ab2-ac93-19ddc76d1b34": "支援手順_TEMPL検索ダイアログ ビュー",
+      "ac13223d-2cf7-4efe-a212-b4564b9f846b": "非アクティブな支援手順_TEMPL",
+      "c20a2c81-a1e8-4537-b442-323af99e9be9": "支援手順_TEMPLの高度な検索ビュー"
+    }
+  },
+  {
+    "DisplayName": "状態 (支援手順_TEMPL)",
+    "Name": "cr013__templ4_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "支援手順_TEMPL"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "支援手順_TEMPL",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (支援手順_TEMPL)",
+    "Name": "cr013__templ4_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "支援手順_TEMPL"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "支援手順_TEMPL",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013__templ4s",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013__templ4",
+    "MaxGetRowsCount": 500,
+    "Name": "支援手順_TEMPL",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "cr013__templ4_AsyncOperations": "システム ジョブ ",
+      "cr013__templ4_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013__templ4_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013__templ4_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013__templ4_ProcessSession": "プロセス セッション",
+      "cr013__templ4_SyncErrors": "同期エラー",
+      "cr013__templ4id": "支援手順_TEMPL",
+      "cr013_field_2": "時間帯",
+      "cr013_field_3": "活動",
+      "cr013_field_4": "本人",
+      "cr013_field_5": "支援者",
+      "cr013_rowno": "RowNo",
+      "cr013_title": "タイトル",
+      "cr013_userlookupid": "UserLookupId",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "支援手順_TEMPL",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

@@ -1,0 +1,140 @@
+[
+  {
+    "DisplayName": "利用者リスト (ビュー)",
+    "Name": "_cr013_901fb039d61742e2bc59b8da8354af29_views",
+    "RelatedEntityName": "利用者リスト",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "18b6bd08-0ee9-4e47-8893-da172fe53449": "非アクティブな利用者リスト",
+      "594be40b-c39c-4718-bb38-604b8779eced": "利用者リスト検索ダイアログ ビュー",
+      "c2db794c-d61a-4160-89ba-d1f7540898a5": "利用者リスト関連ビュー",
+      "effaa120-731b-4c1f-99b9-b8fafc6c9fa2": "利用者リストの高度な検索ビュー",
+      "f586b206-46df-4c6f-a6ea-e702d8bb224a": "アクティブな利用者リスト"
+    }
+  },
+  {
+    "DisplayName": "在籍フラグ (利用者リスト)",
+    "Name": "cr013_901fb039d61742e2bc59b8da8354af29_cr013_activeflag",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_activeflag",
+        "OptionSetReferenceEntityName": "利用者リスト"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cr013_activeflag",
+    "RelatedEntityName": "利用者リスト",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "重度加算 (利用者リスト)",
+    "Name": "cr013_901fb039d61742e2bc59b8da8354af29_cr013_severeaddon",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_severeaddon",
+        "OptionSetReferenceEntityName": "利用者リスト"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cr013_severeaddon",
+    "RelatedEntityName": "利用者リスト",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (利用者リスト)",
+    "Name": "cr013_901fb039d61742e2bc59b8da8354af29_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "利用者リスト"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "利用者リスト",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (利用者リスト)",
+    "Name": "cr013_901fb039d61742e2bc59b8da8354af29_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "利用者リスト"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "利用者リスト",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_901fb039d61742e2bc59b8da8354af29s",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_901fb039d61742e2bc59b8da8354af29",
+    "MaxGetRowsCount": 500,
+    "Name": "利用者リスト",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "cr013_901fb039d61742e2bc59b8da8354af29_AsyncOperations": "システム ジョブ ",
+      "cr013_901fb039d61742e2bc59b8da8354af29_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_901fb039d61742e2bc59b8da8354af29_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_901fb039d61742e2bc59b8da8354af29_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_901fb039d61742e2bc59b8da8354af29_ProcessSession": "プロセス セッション",
+      "cr013_901fb039d61742e2bc59b8da8354af29_SyncErrors": "同期エラー",
+      "cr013_901fb039d61742e2bc59b8da8354af29id": "利用者リスト",
+      "cr013_activeflag": "在籍フラグ",
+      "cr013_field_1": "氏名",
+      "cr013_field_3": "テンプレ更新",
+      "cr013_severeaddon": "重度加算",
+      "cr013_title": "利用者ID",
+      "cr013_userid": "UserID",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "利用者リスト",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

@@ -1,0 +1,153 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_supportrecord_db3s",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_supportrecord_db3",
+    "MaxGetRowsCount": 500,
+    "Name": "SupportRecord_DBs",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "{Attachments}": "Attachments",
+      "cr013_completed": "Completed",
+      "cr013_field_1": "日付",
+      "cr013_field_3": "時間帯",
+      "cr013_field_4": "活動",
+      "cr013_field_5": "本人",
+      "cr013_field_6": "支援者",
+      "cr013_field_7": "様子",
+      "cr013_field_8": "特記事項",
+      "cr013_rowno": "RowNo",
+      "cr013_supportrecord_db3_Annotations": "メモ ",
+      "cr013_supportrecord_db3_AsyncOperations": "システム ジョブ ",
+      "cr013_supportrecord_db3_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_supportrecord_db3_DuplicateBaseRecord": "レコードの重複  (cr013_supportrecord_db3_DuplicateBaseRecord)",
+      "cr013_supportrecord_db3_DuplicateMatchingRecord": "レコードの重複  (cr013_supportrecord_db3_DuplicateMatchingRecord)",
+      "cr013_supportrecord_db3_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_supportrecord_db3_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_supportrecord_db3_ProcessSession": "プロセス セッション",
+      "cr013_supportrecord_db3_SyncErrors": "同期エラー",
+      "cr013_supportrecord_db3id": "SupportRecord_DB",
+      "cr013_title": "タイトル",
+      "cr013_userlookupid": "UserLookupId",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "SupportRecord_DBs",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "SupportRecord_DBs (ビュー)",
+    "Name": "_cr013_supportrecord_db3_views",
+    "RelatedEntityName": "SupportRecord_DBs",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "15e57953-ed3d-43f7-8803-34d44a844c32": "SupportRecord_DB関連ビュー",
+      "217e17d1-3d9b-4276-b7f1-eb900cc1611a": "非アクティブなSupportRecord_DBs",
+      "32a6cc87-03de-4898-b040-093a9717accb": "SupportRecord_DB検索ダイアログ ビュー",
+      "9899674a-89d9-4c7c-bde6-6661f3d3a1a9": "SupportRecord_DBの高度な検索ビュー",
+      "b7926cdf-3ef9-4a2d-bf52-8f446d660f4d": "アクティブなSupportRecord_DBs"
+    }
+  },
+  {
+    "DisplayName": "Completed (SupportRecord_DBs)",
+    "Name": "cr013_supportrecord_db3_cr013_completed",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_completed",
+        "OptionSetReferenceEntityName": "SupportRecord_DBs"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cr013_completed",
+    "RelatedEntityName": "SupportRecord_DBs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "様子 (SupportRecord_DBs)",
+    "Name": "cr013_supportrecord_db3_cr013_field_7",
+    "OptionSetInfoNameMapping": {
+      "0": "安定",
+      "1": "不穏",
+      "2": "混乱",
+      "3": "眠そう",
+      "4": "その他",
+      "5": "未入力"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_field_7",
+        "OptionSetReferenceEntityName": "SupportRecord_DBs"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr013_field_7",
+    "RelatedEntityName": "SupportRecord_DBs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (SupportRecord_DBs)",
+    "Name": "cr013_supportrecord_db3_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "SupportRecord_DBs"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "SupportRecord_DBs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (SupportRecord_DBs)",
+    "Name": "cr013_supportrecord_db3_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "SupportRecord_DBs"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "SupportRecord_DBs",
+    "Type": "OptionSetInfo"
+  }
+]

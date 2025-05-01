@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_staffeventses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_staffevents",
+    "MaxGetRowsCount": 500,
+    "Name": "StaffEvents",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "cr013_description": "内容",
+      "cr013_endtime": "終了時間",
+      "cr013_eventdate": "予定日",
+      "cr013_staffevents_AsyncOperations": "システム ジョブ ",
+      "cr013_staffevents_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_staffevents_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_staffevents_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_staffevents_ProcessSession": "プロセス セッション",
+      "cr013_staffevents_SyncErrors": "同期エラー",
+      "cr013_staffeventsid": "StaffEvents",
+      "cr013_starttime": "開始時間",
+      "cr013_title": "タイトル",
+      "cr013_title1": "スタッフ名",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "StaffEvents",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "StaffEvents (ビュー)",
+    "Name": "_cr013_staffevents_views",
+    "RelatedEntityName": "StaffEvents",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0d628331-57f4-4577-8bde-7739d2707186": "非アクティブなStaffEvents",
+      "5831dd44-3c63-4969-ac99-025a971c42df": "StaffEvents関連ビュー",
+      "70c51181-0d2b-4329-af73-2fb9057ed3cc": "アクティブなStaffEvents",
+      "94be2dde-7c71-4274-9612-a743dba50444": "StaffEventsの高度な検索ビュー",
+      "d8e871b6-4414-4027-98e4-4f06c422b14f": "StaffEvents検索ダイアログ ビュー"
+    }
+  },
+  {
+    "DisplayName": "状態 (StaffEvents)",
+    "Name": "cr013_staffevents_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "StaffEvents"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "StaffEvents",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (StaffEvents)",
+    "Name": "cr013_staffevents_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "StaffEvents"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "StaffEvents",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "DisplayName": "欠席者一覧ss (ビュー)",
+    "Name": "_cr013_s1_views",
+    "RelatedEntityName": "欠席者一覧ss",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "00821611-8540-434d-af00-1c4aad7d4dec": "欠席者一覧s関連ビュー",
+      "1ffa7961-b2bc-44fc-acc6-270dd3b7e8fc": "欠席者一覧s検索ダイアログ ビュー",
+      "40f2e208-08ac-4d0e-b554-5bc4778d2119": "欠席者一覧sの高度な検索ビュー",
+      "634d7b3a-cca1-4e47-8bb2-90e15063610d": "アクティブな欠席者一覧ss",
+      "7429c2e3-0b1f-4008-94be-63760a23776a": "非アクティブな欠席者一覧ss"
+    }
+  },
+  {
+    "DisplayName": "Weekday (欠席者一覧ss)",
+    "Name": "cr013_s1_cr013_weekday",
+    "OptionSetInfoNameMapping": {
+      "0": "月",
+      "1": "火",
+      "2": "水",
+      "3": "木",
+      "4": "金"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr013_weekday",
+        "OptionSetReferenceEntityName": "欠席者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr013_weekday",
+    "RelatedEntityName": "欠席者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "状態 (欠席者一覧ss)_1",
+    "Name": "cr013_s1_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "欠席者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "欠席者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (欠席者一覧ss)_1",
+    "Name": "cr013_s1_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "欠席者一覧ss"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "欠席者一覧ss",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_s1s",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_s1",
+    "MaxGetRowsCount": 500,
+    "Name": "欠席者一覧ss",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "{Attachments}": "Attachments",
+      "cr013_date": "Date",
+      "cr013_s1_Annotations": "メモ ",
+      "cr013_s1_AsyncOperations": "システム ジョブ ",
+      "cr013_s1_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_s1_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_s1_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_s1_ProcessSession": "プロセス セッション",
+      "cr013_s1_SyncErrors": "同期エラー",
+      "cr013_s1id": "欠席者一覧s",
+      "cr013_title": "タイトル",
+      "cr013_weekday": "Weekday",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "欠席者一覧ss",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

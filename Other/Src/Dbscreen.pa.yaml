@@ -1,0 +1,291 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Dbscreen:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnVisible: |-
+        =Set(
+          varFiltered,
+          Filter(
+            SupportRecord_DBs,
+            cr013_userlookupid = varSelectedUser.UserID &&
+            cr013_field_1 >= DateStart.SelectedDate &&
+            cr013_field_1 <= DateEnd.SelectedDate &&
+            (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+          )
+        );
+        Reset(TxtUserID);
+    Children:
+      - Label18:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Size: =18
+            Text: ="支援記録データベース"
+            Width: =262
+      - Button1_1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(127, 178, 57, 1)
+            Font: =Font.'Open Sans'
+            Height: =38
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+              =// フォームをリセットして変数クリア（必要なら）
+              ResetForm(Form4);
+              Set(varRecord, Blank());
+
+              // ホーム画面へ遷移
+              Navigate(HomeScreen, ScreenTransition.None)
+            PaddingRight: =3.75
+            PaddingTop: =3.75
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Size: =12
+            Text: ="1日の支援手順"
+            X: =854
+            Y: =40
+      - DataTable1:
+          Control: DataTable@1.0.3
+          Variant: DataTable
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            HeadingColor: =RGBA(255, 255, 255, 1)
+            HeadingFill: =RGBA(56, 96, 178, 1)
+            HeadingFont: =Font.'Open Sans'
+            Height: =576
+            HoverFill: =RGBA(186, 202, 226, .2)
+            Items: |-
+              =// DataTable1.Items に以下を設定
+              If(
+                  IsBlank(varFiltered),
+                  SupportRecord_DBs,
+                  varFiltered
+              )
+            SelectedFill: =RGBA(56, 96, 178, .2)
+            Width: =1024
+            Y: =192
+          Children:
+            - 特記事項列(_C)1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="特記事項"
+                  FieldName: ="cr013_field_8"
+                  Order: =9
+                  Text: =ThisItem.特記事項
+            - 様子列(_C)1:
+                Control: DataTableColumn@1.0.1
+                Variant: ComplexOptionSet
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="様子"
+                  FieldName: ="cr013_field_7"
+                  Order: =8
+                  Text: =ThisItem.様子
+            - 日付列(_C)1:
+                Control: DataTableColumn@1.0.1
+                Variant: DateTime
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="日付"
+                  FieldName: ="cr013_field_1"
+                  Order: =7
+                  Text: =Text(ThisItem.日付,DateTimeFormat.LongDateTime)
+            - RowNo列(_C)1:
+                Control: DataTableColumn@1.0.1
+                Variant: Number
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="RowNo"
+                  FieldName: ="cr013_rowno"
+                  Order: =6
+                  Text: =ThisItem.RowNo
+            - UserLookupId列(_C)1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="UserLookupId"
+                  FieldName: ="cr013_userlookupid"
+                  Order: =4
+                  Text: =ThisItem.UserLookupId
+      - TxtUserID:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Default: |
+              =varSelectedUser.UserID
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnChange: |-
+              =Set(
+                varFiltered,
+                Filter(
+                  SupportRecord_DBs,
+                  (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                  (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                  (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+                )
+              )
+            Width: =188
+            X: =25
+            Y: =135
+      - DateStart:
+          Control: Classic/DatePicker@2.6.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DefaultDate: |
+              =Today()-7
+            Font: =Font.'Open Sans'
+            Height: =39
+            IconBackground: =RGBA(56, 96, 178, 1)
+            IconFill: =RGBA(255, 255, 255, 1)
+            Width: =188
+            X: =231
+            Y: =136
+      - DateEnd:
+          Control: Classic/DatePicker@2.6.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DefaultDate: |
+              =Today()
+            Font: =Font.'Open Sans'
+            Height: =39
+            IconBackground: =RGBA(56, 96, 178, 1)
+            IconFill: =RGBA(255, 255, 255, 1)
+            Width: =188
+            X: =419
+            Y: =136
+      - ToggleHasNote:
+          Control: Classic/Toggle@2.1.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 0, 0, 1)
+            Default: =true
+            FalseText: = "すべてのデータを表示"
+            Font: =Font.'Open Sans'
+            Height: =54
+            OnChange: |-
+              =Set(
+                  varFiltered,
+                  Filter(
+                      SupportRecord_DBs,
+                      (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                      (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                      (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+                  )
+              )
+            OnSelect: =
+            TrueFill: =RGBA(56, 96, 178, 1)
+            TrueText: ="特記事項あり"
+            Width: =237
+            X: =25
+            Y: =40
+      - BtnFilter:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+              =// BtnFilter.OnSelect
+              Set(
+                  varFiltered,
+                  Filter(
+                      SupportRecord_DBs,
+                      (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                      (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                      (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+                  )
+              )
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            X: =658
+            Y: =110
+      - BtnResetFilter:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+              =Set(varFiltered, Blank());
+              Reset(TxtUserID);
+              Reset(DateStart);
+              Reset(DateEnd);
+              Reset(ToggleHasNote);
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="フィルター解除"
+            X: =854
+            Y: =110
+      - Label3:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            Text: |-
+              =Text(
+                If(
+                  IsBlank(varFiltered),
+                  CountIf(SupportRecord_DBs, true),
+                  CountRows(varFiltered)
+                ) & "件表示中"
+              )
+            X: =344
+            Y: =47
+      - Label6:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =28
+            Text: ="絞り込み期間"
+            Width: =376
+            X: =231
+            Y: =108
+      - Label11:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =25
+            Text: ="ID検索"
+            Width: =188
+            X: =25
+            Y: =110

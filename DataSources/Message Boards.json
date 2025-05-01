@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr013_messageboards",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr013_messageboard",
+    "MaxGetRowsCount": 500,
+    "Name": "Message Boards",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "所有者",
+      "{Attachments}": "Attachments",
+      "cr013_author": "author",
+      "cr013_date": "date",
+      "cr013_message": "message",
+      "cr013_messageboard_Annotations": "メモ ",
+      "cr013_messageboard_AsyncOperations": "システム ジョブ ",
+      "cr013_messageboard_BulkDeleteFailures": "一括削除の失敗 ",
+      "cr013_messageboard_MailboxTrackingFolders": "メールボックス自動追跡フォルダー",
+      "cr013_messageboard_PrincipalObjectAttributeAccesses": "フィールド共有 ",
+      "cr013_messageboard_ProcessSession": "プロセス セッション",
+      "cr013_messageboard_SyncErrors": "同期エラー",
+      "cr013_messageboardid": "Message Board",
+      "cr013_no": "no.",
+      "cr013_title": "タイトル",
+      "createdby": "作成者",
+      "createdon": "作成日",
+      "createdonbehalfby": "作成者 (代理)",
+      "importsequencenumber": "インポート シーケンス番号",
+      "modifiedby": "修正者",
+      "modifiedon": "修正日",
+      "modifiedonbehalfby": "修正者 (代理)",
+      "overriddencreatedon": "レコード作成日",
+      "owningbusinessunit": "所属部署",
+      "owningteam": "所有チーム",
+      "owninguser": "所有ユーザー",
+      "statecode": "状態",
+      "statuscode": "ステータス",
+      "timezoneruleversionnumber": "タイム ゾーン規則のバージョン番号",
+      "utcconversiontimezonecode": "UTC 変換タイム ゾーン コード",
+      "versionnumber": "バージョン番号"
+    },
+    "PreferredName": "Message Boards",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Message Boards (ビュー)",
+    "Name": "_cr013_messageboard_views",
+    "RelatedEntityName": "Message Boards",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0b97e3d6-6de7-4c48-b7c1-78815db13bcf": "非アクティブなMessage Boards",
+      "7be4a6d2-54fe-4dfa-a27b-bfdf2d689510": "Message Board関連ビュー",
+      "abad0552-f03e-4f9d-a5c8-b51df8817485": "Message Boardの高度な検索ビュー",
+      "b5ba7059-fa49-4834-9f79-dc61e830b379": "Message Board検索ダイアログ ビュー",
+      "ef14ba18-38c0-4e7a-9984-fb72981672fb": "アクティブなMessage Boards"
+    }
+  },
+  {
+    "DisplayName": "状態 (Message Boards)",
+    "Name": "cr013_messageboard_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "アクティブ",
+      "1": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Message Boards"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Message Boards",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ステータス (Message Boards)",
+    "Name": "cr013_messageboard_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "アクティブ",
+      "2": "非アクティブ"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Message Boards"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Message Boards",
+    "Type": "OptionSetInfo"
+  }
+]

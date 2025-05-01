@@ -1,0 +1,12 @@
+"'4559c846-8f7e-4b9d-b4ac-d7962d0263eb' As TestSuite":
+    Description: =""
+    DisplayName: ="スイート"
+
+    "'6be8ca42-b9ed-441b-bb29-58c9caae293f' As TestCase":
+        Description: =""
+        DisplayName: ="ケース"
+
+        Step1 As TestStep:
+            Description: ="保存"
+            Value: =
+

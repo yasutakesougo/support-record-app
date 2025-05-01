@@ -1,0 +1,266 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_cr013_supportrecord_db3_forms",
+      "Namespace": "SupportRecord_DBs (フォーム)",
+      "Values": {
+        "情報": "c3e53723-1857-4e79-bceb-9e1c896a6cd9"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_1_forms",
+      "Namespace": "1日の中で気をつける事 (フォーム)",
+      "Values": {
+        "情報": "c87ee44d-6b9e-4e4f-9e19-514cd27d1d98"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_901fb039d61742e2bc59b8da8354af29_forms",
+      "Namespace": "利用者リスト (フォーム)",
+      "Values": {
+        "情報": "6c79f0bc-45fa-48a8-bc63-ecf4ff246a5f"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__templ4_forms",
+      "Namespace": "支援手順_TEMPL (フォーム)",
+      "Values": {
+        "情報": "aed169fe-20c2-419b-94c3-eb8b65e668a3"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_staffevents_forms",
+      "Namespace": "StaffEvents (フォーム)",
+      "Values": {
+        "情報": "7642442e-8a31-471a-9598-d52b079191aa"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_messageboard_forms",
+      "Namespace": "Message Boards (フォーム)",
+      "Values": {
+        "情報": "4f1c1fbc-c865-452c-84dd-c88be56acb48"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__masters_forms",
+      "Namespace": "通所予定人数_MASTERss (フォーム)",
+      "Values": {
+        "情報": "e4a9a705-9b20-4053-94a7-836a6a5af249"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_s1_forms",
+      "Namespace": "欠席者一覧ss (フォーム)",
+      "Values": {
+        "情報": "5c46da66-af0d-40e4-8436-a316dcc82bd0"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_4992e49883294d18b286245194f37bb6_forms",
+      "Namespace": "早退者一覧 (フォーム)",
+      "Values": {
+        "情報": "b31ab50e-be3a-4d49-99b5-480762526315"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_s_forms",
+      "Namespace": "遅刻者一覧ss (フォーム)",
+      "Values": {
+        "情報": "c31827fd-0097-4769-9795-87993177e3b7"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db2_forms",
+      "Namespace": "SupportRecord_DB (フォーム)",
+      "Values": {
+        "情報": "28316ae7-a22e-44a5-9fdc-eaed64c48d4e"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__master3_forms",
+      "Namespace": "通所予定人数_MASTERs (フォーム)",
+      "Values": {
+        "情報": "e073735a-c01e-4c99-9cee-764c12f7dec9"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_91022538e2a14e1c89134c19a83355d7_forms",
+      "Namespace": "遅刻者一覧 (フォーム)",
+      "Values": {
+        "情報": "c2a2f02a-abb5-4b2c-9447-cadfe585fc78"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_7a364a47e9144b08acd787c0d2bcc3c0_forms",
+      "Namespace": "早退者一覧 (フォーム)1",
+      "Values": {
+        "情報": "6fa93ed6-b57d-4bd4-b3c3-4eb6b33c4e09"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_16b3e165d87249eba4aabeecd81d05551_forms",
+      "Namespace": "欠席者一覧s (フォーム)",
+      "Values": {
+        "情報": "0e5392c5-b253-4766-b3dd-7004b7b77b5f"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__master2_forms",
+      "Namespace": "通所予定人数_MASTER (フォーム)",
+      "Values": {
+        "情報": "2d0f5573-cf6a-48a9-bf92-ffe8bac64b3a"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_16b3e165d87249eba4aabeecd81d0555_forms",
+      "Namespace": "欠席者一覧s (フォーム)1",
+      "Values": {
+        "情報": "4699c723-c7be-40c7-a923-fee316a646f1"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_b2d0cec943684980b39bed6465eb6add_forms",
+      "Namespace": "早退者一覧s (フォーム)",
+      "Values": {
+        "情報": "dbb10724-841d-4e13-955b-81c2841ca15d"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_e9b17b62ce4c4271ac62714d9475b299_forms",
+      "Namespace": "遅刻者一覧s (フォーム)",
+      "Values": {
+        "情報": "b4cd1140-aa95-4302-bd71-ebc1edff4ea7"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__master_forms",
+      "Namespace": "通所予定人数_MASTERs (フォーム)1",
+      "Values": {
+        "情報": "7d5a41bb-f0d5-4600-a232-db1fa98c6eeb"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db1_forms",
+      "Namespace": "SupportRecord_DB (フォーム)1",
+      "Values": {
+        "情報": "38513091-9e1f-4e42-9968-e95365b42840"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_08b3b070d2514dcba94e7b3911a3d292_forms",
+      "Namespace": "連絡事項（引き継ぎなど） (フォーム)",
+      "Values": {
+        "情報": "31f8196b-f9a6-47af-9bc7-d4255b543ec7"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db_forms",
+      "Namespace": "SupportRecord_DBs (フォーム)1",
+      "Values": {
+        "情報": "c114de7f-75e7-4f1e-8ff3-9b5d1dd68f48"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_1_template_forms",
+      "Namespace": "1日の中で気をつける事_templates (フォーム)",
+      "Values": {
+        "情報": "a51ef3c1-8009-4eec-a900-c8225b1343ea"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db_template_forms",
+      "Namespace": "SupportRecord_DB_templates (フォーム)",
+      "Values": {
+        "情報": "eb562e6a-afac-45f1-b920-dd46eaca3e33"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__care_forms",
+      "Namespace": "気をつける事_CARE (フォーム)",
+      "Values": {
+        "情報": "9ff8ac52-0961-42e4-9678-974b38fcc4dd"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_938199a6a9214b24b6ca9b2da927636c_forms",
+      "Namespace": "連絡掲示板s (フォーム)",
+      "Values": {
+        "情報": "790c2b5a-ecff-4dbb-8aed-bb8147739773"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db2_forms",
+      "Namespace": "SupportRecord_DB (フォーム)11",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db2_forms",
+      "Namespace": "SupportRecord_DB (フォーム)2",
+      "Values": {
+        "情報": "28316ae7-a22e-44a5-9fdc-eaed64c48d4e"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db2_forms",
+      "Namespace": "SupportRecord_DB (フォーム)3",
+      "Values": {
+        "情報": "28316ae7-a22e-44a5-9fdc-eaed64c48d4e"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_16b3e165d87249eba4aabeecd81d05551_forms",
+      "Namespace": "欠席者一覧s (フォーム)11",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013__master3_forms",
+      "Namespace": "通所予定人数_MASTERs (フォーム)11",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db3_forms",
+      "Namespace": "SupportRecord_DBs (フォーム)11",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db3_forms",
+      "Namespace": "SupportRecord_DBs (フォーム)2",
+      "Values": {
+        "情報": "c3e53723-1857-4e79-bceb-9e1c896a6cd9"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013_supportrecord_db3_forms",
+      "Namespace": "SupportRecord_DBs (フォーム)3",
+      "Values": {
+        "情報": "c3e53723-1857-4e79-bceb-9e1c896a6cd9"
+      }
+    },
+    {
+      "Kind": "default.cds_cr013__master4_forms",
+      "Namespace": "通所予定人数_MASTERs (フォーム)2",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_e9b17b62ce4c4271ac62714d9475b2991_forms",
+      "Namespace": "遅刻者一覧s (フォーム)1",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_16b3e165d87249eba4aabeecd81d05552_forms",
+      "Namespace": "欠席者一覧s (フォーム)2",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_3e307b86b15844fdb5df6d3e9f1b194e_forms",
+      "Namespace": "早退者一覧 (フォーム)11",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_cr013_4992e49883294d18b286245194f37bb6_forms",
+      "Namespace": "早退者一覧 (フォーム)2",
+      "Values": {}
+    }
+  ]
+}

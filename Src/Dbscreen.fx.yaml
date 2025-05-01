@@ -1,0 +1,246 @@
+Dbscreen As screen:
+    OnVisible: |-
+        =Set(
+          varFiltered,
+          Filter(
+            SupportRecord_DBs,
+            cr013_userlookupid = varSelectedUser.UserID &&
+            cr013_field_1 >= DateStart.SelectedDate &&
+            cr013_field_1 <= DateEnd.SelectedDate &&
+            (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+          )
+        );
+        Reset(TxtUserID);
+
+    Label18 As label:
+        FontWeight: =FontWeight.Semibold
+        Size: =18
+        Text: ="支援記録データベース"
+        Width: =262
+        ZIndex: =3
+
+    Button1_1 As button:
+        Fill: =RGBA(127, 178, 57, 1)
+        Height: =38
+        OnSelect: |-
+            =// フォームをリセットして変数クリア（必要なら）
+            ResetForm(Form4);
+            Set(varRecord, Blank());
+            
+            // ホーム画面へ遷移
+            Navigate(HomeScreen, ScreenTransition.None)
+        PaddingRight: =3.75
+        PaddingTop: =3.75
+        Size: =12
+        Text: ="1日の支援手順"
+        X: =854
+        Y: =40
+        ZIndex: =4
+
+    DataTable1 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =576
+        Items: |-
+            =// DataTable1.Items に以下を設定
+            If(
+                IsBlank(varFiltered),
+                SupportRecord_DBs,
+                varFiltered
+            )
+        Width: =1024
+        X: =0
+        Y: =192
+        ZIndex: =6
+
+        "'特記事項列(_C)1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="特記事項"
+            FieldName: ="cr013_field_8"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =9
+            Text: =ThisItem.特記事項
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        "'様子列(_C)1' As dataTableColumn.complexOptionSetColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="様子"
+            FieldName: ="cr013_field_7"
+            FieldVariantName: ="complexOptionSetColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =8
+            Text: =ThisItem.様子
+            Width: =100
+            X: =573
+            Y: =0
+            ZIndex: =2
+
+        "'日付列(_C)1' As dataTableColumn.dateTimeColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="日付"
+            FieldName: ="cr013_field_1"
+            FieldVariantName: ="dateTimeColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =7
+            Text: =Text(ThisItem.日付,DateTimeFormat.LongDateTime)
+            Width: =100
+            X: =477
+            Y: =0
+            ZIndex: =3
+
+        "'RowNo列(_C)1' As dataTableColumn.numberColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="RowNo"
+            FieldName: ="cr013_rowno"
+            FieldVariantName: ="numberColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =6
+            Text: =ThisItem.RowNo
+            Width: =100
+            X: =160
+            Y: =0
+            ZIndex: =4
+
+        "'UserLookupId列(_C)1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="UserLookupId"
+            FieldName: ="cr013_userlookupid"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.UserLookupId
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+    TxtUserID As text:
+        Default: |
+            =varSelectedUser.UserID
+        OnChange: |-
+            =Set(
+              varFiltered,
+              Filter(
+                SupportRecord_DBs,
+                (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+              )
+            )
+        Width: =188
+        X: =25
+        Y: =135
+        ZIndex: =7
+
+    DateStart As datepicker:
+        DefaultDate: |
+            =Today()-7
+        Height: =39
+        Width: =188
+        X: =231
+        Y: =136
+        ZIndex: =8
+
+    DateEnd As datepicker:
+        DefaultDate: |
+            =Today()
+        Height: =39
+        Width: =188
+        X: =419
+        Y: =136
+        ZIndex: =9
+
+    ToggleHasNote As toggleSwitch:
+        Color: =RGBA(255, 0, 0, 1)
+        Default: =true
+        FalseText: = "すべてのデータを表示"
+        Height: =54
+        OnChange: |-
+            =Set(
+                varFiltered,
+                Filter(
+                    SupportRecord_DBs,
+                    (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                    (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                    (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+                )
+            )
+        OnSelect: =
+        TrueText: ="特記事項あり"
+        Width: =237
+        X: =25
+        Y: =40
+        ZIndex: =10
+
+    BtnFilter As button:
+        OnSelect: |-
+            =// BtnFilter.OnSelect
+            Set(
+                varFiltered,
+                Filter(
+                    SupportRecord_DBs,
+                    (IsBlank(TxtUserID.Text) || cr013_userlookupid = TxtUserID.Text) &&
+                    (cr013_field_1 >= DateStart.SelectedDate && cr013_field_1 <= DateEnd.SelectedDate) &&
+                    (!ToggleHasNote.Value || !IsBlank(cr013_field_8))
+                )
+            )
+        Text: ="ボタン"
+        X: =658
+        Y: =110
+        ZIndex: =11
+
+    BtnResetFilter As button:
+        OnSelect: |-
+            =Set(varFiltered, Blank());
+            Reset(TxtUserID);
+            Reset(DateStart);
+            Reset(DateEnd);
+            Reset(ToggleHasNote);
+        Text: ="フィルター解除"
+        X: =854
+        Y: =110
+        ZIndex: =12
+
+    Label3 As label:
+        Text: |-
+            =Text(
+              If(
+                IsBlank(varFiltered),
+                CountIf(SupportRecord_DBs, true),
+                CountRows(varFiltered)
+              ) & "件表示中"
+            )
+        X: =344
+        Y: =47
+        ZIndex: =13
+
+    Label6 As label:
+        Align: =Align.Center
+        BorderThickness: =1
+        Height: =28
+        Text: ="絞り込み期間"
+        Width: =376
+        X: =231
+        Y: =108
+        ZIndex: =14
+
+    Label11 As label:
+        Align: =Align.Center
+        BorderThickness: =1
+        Height: =25
+        Text: ="ID検索"
+        Width: =188
+        X: =25
+        Y: =110
+        ZIndex: =15
+
