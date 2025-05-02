@@ -35,7 +35,4 @@ jobs:
     - name: Import Solution to Dataverse
       run: |
         pac auth select --name default
-        pac solution import \
-          --path SupportRecordSolution/bin/Debug/SupportRecordSolution.zip \
-          --environment ${{ secrets.PP_ENVIRONMENT }} \
-          --publish-changes
+        pac solution import           --path SupportRecordSolution/bin/Debug/SupportRecordSolution.zip           --environment ${{ secrets.PP_ENVIRONMENT }}           --publish-changes
