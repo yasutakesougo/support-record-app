@@ -1,0 +1,28 @@
+name: Pack & Deploy Canvas App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Install Power Platform CLI
+      run: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
+    - name: Pack Canvas App
+      run: pac canvas pack --sources ./ --msapp ./support-record-app.packed.msapp
+
+    - name: Deploy to Power Platform
+      run: pac canvas import --environment ${{ secrets.PP_ENVIRONMENT }} --path ./support-record-app.packed.msapp
