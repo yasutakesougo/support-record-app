@@ -1,29 +1,7 @@
-name: Pack & Deploy Canvas App
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '9.0.x'
-
-    - name: Install Power Platform CLI
-      run: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
-
-    - name: Pack Canvas App
-      run: pac canvas pack --sources ./ --msapp ./support-record-app.packed.msapp
-
+`11
+cd ~/projects/CanvasAppSrc
+nano .github/workflows/pack-and-deploy.ymlcd ~/projects/CanvasAppSrc
+nano .github/workflows/pack-and-deploy.y
     - name: Init Solution
       run: pac solution init --publisher-name "YourPublisherName" --publisher-prefix yp --outputDirectory SupportRecordSolution
 
@@ -35,4 +13,7 @@ jobs:
     - name: Import Solution to Dataverse
       run: |
         pac auth select --name default
-        pac solution import           --path SupportRecordSolution/bin/Debug/SupportRecordSolution.zip           --environment ${{ secrets.PP_ENVIRONMENT }}           --publish-changes
+        pac solution import \
+          --path SupportRecordSolution/bin/Debug/SupportRecordSolution.zip \
+          --environment ${{ secrets.PP_ENVIRONMENT }} \
+          --publish-changes
