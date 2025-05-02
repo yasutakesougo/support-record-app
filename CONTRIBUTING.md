@@ -7,7 +7,7 @@
 - **feature/**: 個別機能・修正ごとに作成
   - `git checkout -b feature/xxx develop`
   - 開発 → コミット → `git push -u origin feature/xxx`
-  - GitHub 上で Pull Request → develop にマージ
+  - Pull Request → develop にマージ
 - **release/** (任意): リリース前の最終調整用
 - **hotfix/** (任意): 本番緊急修正用
 
