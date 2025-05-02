@@ -24,5 +24,18 @@ jobs:
     - name: Pack Canvas App
       run: pac canvas pack --sources ./ --msapp ./support-record-app.packed.msapp
 
-    - name: Deploy to Power Platform
-      run: pac canvas import --environment ${{ secrets.PP_ENVIRONMENT }} --path ./support-record-app.packed.msapp
+    - name: Init Solution
+      run: pac solution init --publisher-name "YourPublisherName" --publisher-prefix yp --outputDirectory SupportRecordSolution
+
+    - name: Build Solution
+      run: |
+        cd SupportRecordSolution
+        dotnet build SupportRecordSolution.cdsproj --configuration Debug
+
+    - name: Import Solution to Dataverse
+      run: |
+        pac auth select --name default
+        pac solution import \
+          --path SupportRecordSolution/bin/Debug/SupportRecordSolution.zip \
+          --environment ${{ secrets.PP_ENVIRONMENT }} \
+          --publish-changes
